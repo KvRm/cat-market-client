@@ -1,0 +1,101 @@
+<section class="pt-[60px] flex flex-col items-center">
+  <form name="register" class="flex mt-4 flex-col gap-5 w-full max-w-[400px]" (ngSubmit)="onSubmit()">
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Имя*</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите имя"
+        name="firstName"
+        [(ngModel)]="form.firstName"
+      />
+      @if (validation['firstName']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['firstName']}}</span>
+      }
+    </label>
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Фамилия*</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите фамилию"
+        name="lastName"
+        [(ngModel)]="form.lastName"
+      />
+      @if (validation['lastName']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['lastName']}}</span>
+      }
+    </label>
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Отчество</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите отчество"
+        name="secondName"
+        [(ngModel)]="form.secondName"
+      />
+      @if (validation['secondName']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['secondName']}}</span>
+      }
+    </label>
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Почта*</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите почту"
+        name="email"
+        [(ngModel)]="form.email"
+      />
+      @if (validation['email']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['email']}}</span>
+      }
+    </label>
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Номер телефона*</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите номер телефона"
+        name="phone"
+        type="tel"
+        [(ngModel)]="form.phone"
+      />
+      @if (validation['phone']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['phone']}}</span>
+      }
+    </label>
+    <div class="flex flex-col">
+      <span class="text-slate-500 text-sm">Пол*</span>
+      <div class="flex justify-center h-10 mt-2">
+        <label [class]="getCheckboxStyle(1)" for="1">Мужской</label>
+        <label [class]="getCheckboxStyle(2)" for="2">Женский</label>
+      </div>
+      <div class="hidden">
+        <input type="radio" id="1" [value]="1" name="sex" [(ngModel)]="form.sex" />
+        <input type="radio" id="2" [value]="2" name="sex" [(ngModel)]="form.sex" />
+      </div>
+      @if (validation['sex']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['sex']}}</span>
+      }
+    </div>
+
+    <button
+      class="bg-slate-950 text-white px-4 py-2 text-xl border-[1px] border-slate-950 hover:bg-white hover:text-slate-950 disabled:opacity-50 disabled:hover:bg-slate-950 disabled:hover:text-white disabled:hover:cursor-no-drop"
+      type="submit"
+      [disabled]="isBtnDisabled"
+    >
+      Сохранить
+    </button>
+
+    <button
+      type="button"
+      class="text-red-600 px-4 py-2 text-xl border-[1px] border-red-600 hover:bg-red-600 hover:text-white"
+      (click)="handleLogout()"
+    >
+      Выйти
+    </button>
+  </form>
+
+  @if (isLoading) {
+  <div class="flex justify-center items-center bg-white bottom-0 absolute left-0 bg-opacity-50 right-0 top-0">
+    <div class="ui-spinner h-6 w-6 border-[3px] border-slate-950 border-b-white rounded-full"></div>
+  </div>
+  }
+</section>

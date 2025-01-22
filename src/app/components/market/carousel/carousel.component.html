@@ -1,0 +1,13 @@
+<div class="swiper h-full">
+  <div class="swiper-wrapper">
+    @for (source of sources; track source) {
+    <div class="swiper-slide" [style]="getSlideStyle(source)"></div>
+    }
+  </div>
+  <div class="swiper-pagination !text-slate-950"></div>
+
+  <div class="swiper-button-prev !text-slate-950 hover:!text-white"></div>
+  <div class="swiper-button-next !text-slate-950 hover:!text-white"></div>
+
+  <div class="swiper-scrollbar"></div>
+</div>

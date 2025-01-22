@@ -1,0 +1,15 @@
+<div class="flex items-center flex-col p-4 h-[386px]">
+  <div class="flex-1">
+    <img class="w-fit max-h-[284px]" [src]="getProductImageUrl(product.imageUrl)" />
+  </div>
+  <div class="text-lg mt-1">{{product.name}}</div>
+  <section class="flex w-full justify-between px-6 mt-1">
+    <button [class]="favoritesIconClass" title="Добавить в избранное" (click)="toggleFavorite(product.id)">
+      <sprite-icon [name]="favoriteButtonIcon" size="28" />
+    </button>
+    <a [routerLink]="addCartBtnLink" class="flex cursor-pointer items-center gap-1 text-xl hover:bg-slate-950 hover:text-white p-1">
+      <sprite-icon name="cart" size="28" />
+      В корзину
+    </a>
+  </section>
+</div>

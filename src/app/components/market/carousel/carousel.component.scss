@@ -1,0 +1,11 @@
+.swiper-pagination-bullet-active {
+  background-color: rgb(2, 6, 23) !important;
+}
+
+.swiper-button-prev {
+  // color: rgb(2, 6, 23) !important;
+
+  &:hover {
+    color: #fff !important;
+  }
+}

@@ -1,0 +1,51 @@
+<section class="pt-[60px] flex flex-col items-center">
+  <div class="flex items-center w-full h-[52px] max-w-[400px]">
+    <a
+      routerLink="/auth/login"
+      class="flex justify-center items-center cursor-pointer w-full h-full text-xl bg-slate-950 text-white border-slate-950 border-[1px] hover:border-slate-950"
+    >
+      Авторизация
+    </a>
+    <a
+      routerLink="/auth/register"
+      class="flex justify-center items-center cursor-pointer w-full h-full text-xl border-white border-[1px] hover:border-slate-950"
+    >
+      Регистрация
+    </a>
+  </div>
+
+  <form name="register" class="flex mt-4 flex-col gap-5 w-full max-w-[400px]" (ngSubmit)="onSubmit()">
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Логин*</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите email или номер телефона"
+        name="firstName"
+        [(ngModel)]="form.login"
+      />
+      @if (validation['login']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['login']}}</span>
+      }
+    </label>
+    <label class="flex flex-col">
+      <span class="text-slate-500 text-sm">Пароль*</span>
+      <input
+        class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
+        placeholder="Введите пароль"
+        name="phone"
+        type="password"
+        [(ngModel)]="form.password"
+      />
+      @if (validation['password']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['password']}}</span>
+      }
+    </label>
+
+    <button
+      class="bg-slate-950 text-white px-4 py-2 text-xl border-[1px] border-slate-950 hover:bg-white hover:text-slate-950"
+      type="submit"
+    >
+      Войти
+    </button>
+  </form>
+</section>
