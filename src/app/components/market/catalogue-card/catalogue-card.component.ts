@@ -4,6 +4,8 @@ import { Component, Inject, Input, PLATFORM_ID } from '@angular/core'
 import { RouterLink } from '@angular/router'
 import { environment } from '../../../../enviroments/enviroment'
 // eslint-disable-next-line ts/consistent-type-imports
+import { CartsService } from '../../../services/carts.service'
+// eslint-disable-next-line ts/consistent-type-imports
 import { FavoritesService } from '../../../services/favorites.service'
 import { SpriteIconComponent } from '../../sprite-icon/sprite-icon.component'
 
@@ -18,6 +20,7 @@ export class MarketCatalogueCardComponent {
 
   constructor(
     private favoritesService: FavoritesService,
+    private cartService: CartsService,
     @Inject(PLATFORM_ID) platformId: object,
   ) {
     this.isBrowser = isPlatformBrowser(platformId)
@@ -40,6 +43,20 @@ export class MarketCatalogueCardComponent {
     return this.favoritesService.favoriteIds.includes(this.product.id)
       ? `${base} text-red-500 hover:text-red-500`
       : `${base} hover:text-white`
+  }
+
+  get isInCart() {
+    return this.cartService.cart?.products.some(p => p.id === this.product.id)
+  }
+
+  get cartCount() {
+    return this.cartService.cart?.products.find(p => p.id === this.product.id)?.count || 0
+  }
+
+  addToCart(count: number) {
+    if (!localStorage.getItem('accessToken'))
+      return
+    this.cartService.addToProduct({ productId: this.product.id, count }).subscribe(() => this.cartService.getCurrent())
   }
 
   getProductImageUrl(url: string) {

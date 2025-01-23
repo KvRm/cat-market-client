@@ -1,0 +1,45 @@
+<div class="flex justify-center pt-4">
+  @if (!cart) {
+  <div class="flex flex-col items-center justify-center h-[300px]">
+    <div class="text-slate-700 text-[24px]">К сожалению тут ничего нет 🥺</div>
+    <a routerLink="/" class="text-[20px] border-b-[1px] border-dotted border-slate-950 leading-5 mt-6">
+      Перейти в каталог
+    </a>
+  </div>
+  } @else {
+  <div class="flex flex-col sm:flex-row gap-4">
+    <div class="flex gap-2 flex-col">
+      @for (product of cart.products; track product.id) {
+      <market-catalogue-card [product]="product" />
+      }
+    </div>
+
+    <div class="flex flex-col border-[2px] border-dashed border-slate-950 px-6 py-4 h-fit">
+      <h2 class="text-xl">Ваша корзина</h2>
+
+      <div class="flex flex-col gap-2 mt-6">
+        @for (product of cart.products; track product.id) {
+        <div>{{product.name}} * {{product.count}} = {{(product.price * product.count).toLocaleString()}} РУБ</div>
+        }
+      </div>
+
+      <div class="mt-6 text-bold text-xl">Итого = {{sum.toLocaleString()}} РУБ</div>
+
+      <div class="flex justify-between gap-4 mt-6">
+        <button
+          class="text-red-600 px-4 py-2 text-xl border-[1px] border-red-600 hover:bg-red-600 hover:text-white"
+          (click)="clearCart()"
+        >
+          Очистить
+        </button>
+        <a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          class="bg-slate-950 text-white px-4 py-2 text-xl border-[1px] border-slate-950 hover:bg-white hover:text-slate-950"
+        >
+          Оплатить
+        </a>
+      </div>
+    </div>
+  </div>
+  }
+</div>

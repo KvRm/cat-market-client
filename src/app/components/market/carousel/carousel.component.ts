@@ -40,7 +40,6 @@ export class MarketCarouselComponent implements OnInit {
       modules: [Navigation, Pagination, Autoplay],
       speed: 400,
       spaceBetween: 0,
-      loop: true,
 
       autoplay: {
         pauseOnMouseEnter: true,

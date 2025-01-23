@@ -17,8 +17,8 @@ import { User, UserService } from '../../services/user.service'
 export class ProfilePageComponent implements OnInit {
   constructor(
     private userService: UserService,
-    @Inject(PLATFORM_ID) platformId: object,
     private router: Router,
+    @Inject(PLATFORM_ID) platformId: object,
   ) {
     if (isPlatformBrowser(platformId)) {
       this.fetchUser()
@@ -72,7 +72,7 @@ export class ProfilePageComponent implements OnInit {
 
   handleLogout() {
     localStorage.removeItem('accessToken')
-    this.router.navigate(['auth/login'])
+    window.location.href = `${window.location.origin}/auth/login`
   }
 
   onSubmit() {

@@ -3,20 +3,20 @@
     data-id="header"
     class="fixed top-4 w-[calc(100%-4rem)] z-[2] bg-slate-950 transition duration-300 flex items-center justify-between px-8 text-white h-16"
   >
-    <a routerLink="/" class="text-[24px]">КотоМаркет</a>
+    <a routerLink="/" class="text-[24px] p-1 hover:bg-white hover:text-slate-950">КотоМаркет</a>
     <ul class="flex items-center gap-2 text-lg">
       <li title="Избранное">
-        <a [class]="favoritesIconClass" routerLink="/favorites">
+        <a routerLink="/favorites" [class]="favoritesIconClass">
           <sprite-icon [name]="favoritesIcon" size="28" />
         </a>
       </li>
       <li title="Корзина">
-        <a [routerLink]="cartLink" class="block cursor-pointer p-2 hover:bg-white hover:text-slate-950">
-          <sprite-icon name="cart" size="28" />
+        <a routerLink="/cart" [class]="cartIconClass">
+          <sprite-icon [name]="cartIcon" size="28" />
         </a>
       </li>
       <li title="Профиль">
-        <a [routerLink]="profileLink" [class]="profileIconClass">
+        <a routerLink="/profile" [class]="profileIconClass">
           <sprite-icon [name]="profileIcon" size="28" />
         </a>
       </li>

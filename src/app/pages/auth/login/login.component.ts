@@ -40,7 +40,7 @@ export class AuthLoginPageComponent implements OnInit {
       const { accessToken } = (v as { accessToken: string }) || {}
       if (accessToken) {
         localStorage.setItem('accessToken', accessToken)
-        this.router.navigate(['/profile'])
+        window.location.href = `${window.location.origin}/profile`
       }
     })
   }

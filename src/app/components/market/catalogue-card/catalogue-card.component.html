@@ -3,13 +3,35 @@
     <img class="w-fit max-h-[284px]" [src]="getProductImageUrl(product.imageUrl)" />
   </div>
   <div class="text-lg mt-1">{{product.name}}</div>
-  <section class="flex w-full justify-between px-6 mt-1">
+  <section class="flex w-full justify-between px-2 mt-1">
     <button [class]="favoritesIconClass" title="Добавить в избранное" (click)="toggleFavorite(product.id)">
       <sprite-icon [name]="favoriteButtonIcon" size="28" />
     </button>
-    <a [routerLink]="addCartBtnLink" class="flex cursor-pointer items-center gap-1 text-xl hover:bg-slate-950 hover:text-white p-1">
+    @if (!isInCart) {
+    <a
+      [routerLink]="addCartBtnLink"
+      class="flex cursor-pointer items-center gap-1 text-xl hover:bg-slate-950 hover:text-white p-1"
+      (click)="addToCart(1)"
+    >
       <sprite-icon name="cart" size="28" />
-      В корзину
+      {{product.price.toLocaleString()}} ₽
     </a>
+    } @else {
+    <div class="h-9 flex text-xl items-center border-[1px] border-slate-950">
+      <button
+        class="bg-slate-950 text-white h-9 w-9 border-[1px] border-l-[0] border-slate-950 hover:bg-white hover:text-slate-950"
+        (click)="addToCart(cartCount - 1)"
+      >
+        -
+      </button>
+      <div class="px-1 text-[16px] text-nowrap">{{cartCount}} * {{product.price.toLocaleString()}} ₽</div>
+      <button
+        class="bg-slate-950 text-white h-9 w-9 border-[1px] border-r-[0] border-slate-950 hover:bg-white hover:text-slate-950"
+        (click)="addToCart(cartCount + 1)"
+      >
+        +
+      </button>
+    </div>
+    }
   </section>
 </div>
