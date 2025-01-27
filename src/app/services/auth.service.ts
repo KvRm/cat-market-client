@@ -2,7 +2,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { environment } from '../../enviroments/enviroment'
-import { getHeaders } from '../utils/headers'
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +16,10 @@ export class AuthService {
   }
 
   login(payload: object) {
-    return this.http.post(`${environment.apiUrl}/auth/login`, payload, { withCredentials: true })
-  }
-
-  refresh() {
-    return this.http.post(`${environment.apiUrl}/auth/refresh`, {}, { withCredentials: true })
+    const formData = new FormData()
+    for (const key in payload) {
+      formData.append(key, payload[key as keyof typeof payload])
+    }
+    return this.http.post(`${environment.apiUrl}/auth/login`, formData, { withCredentials: true })
   }
 }

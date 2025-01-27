@@ -5,11 +5,11 @@
       <input
         class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
         placeholder="Введите имя"
-        name="firstName"
-        [(ngModel)]="form.firstName"
+        name="first_name"
+        [(ngModel)]="form.first_name"
       />
-      @if (validation['firstName']) {
-      <span class="text-sm text-red-600 mt-1">{{validation['firstName']}}</span>
+      @if (validation['first_name']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['first_name']}}</span>
       }
     </label>
     <label class="flex flex-col">
@@ -17,11 +17,11 @@
       <input
         class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
         placeholder="Введите фамилию"
-        name="lastName"
-        [(ngModel)]="form.lastName"
+        name="last_name"
+        [(ngModel)]="form.last_name"
       />
-      @if (validation['lastName']) {
-      <span class="text-sm text-red-600 mt-1">{{validation['lastName']}}</span>
+      @if (validation['last_name']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['last_name']}}</span>
       }
     </label>
     <label class="flex flex-col">
@@ -29,11 +29,11 @@
       <input
         class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
         placeholder="Введите отчество"
-        name="secondName"
-        [(ngModel)]="form.secondName"
+        name="second_name"
+        [(ngModel)]="form.second_name"
       />
-      @if (validation['secondName']) {
-      <span class="text-sm text-red-600 mt-1">{{validation['secondName']}}</span>
+      @if (validation['second_name']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['second_name']}}</span>
       }
     </label>
     <label class="flex flex-col">

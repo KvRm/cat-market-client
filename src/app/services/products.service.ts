@@ -6,8 +6,8 @@ import { environment } from '../../enviroments/enviroment'
 export interface Product {
   id: number
   name: string
-  categoryId: number
-  imageUrl: string
+  category_id: number
+  image_url: string
   price: number
 }
 
@@ -17,7 +17,7 @@ export interface Product {
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  getProducts(params: object) {
-    return this.http.post(`${environment.apiUrl}/products/all`, params, { withCredentials: true })
+  getProducts(params: Record<string, string | number | number[]>) {
+    return this.http.get(`${environment.apiUrl}/products/all`, { params, withCredentials: true })
   }
 }

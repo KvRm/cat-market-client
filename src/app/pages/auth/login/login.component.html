@@ -20,11 +20,11 @@
       <input
         class="h-10 outline-none border-b-[1px] border-slate-950 placeholder:text-slate-500"
         placeholder="Введите email или номер телефона"
-        name="firstName"
-        [(ngModel)]="form.login"
+        name="first_name"
+        [(ngModel)]="form.username"
       />
-      @if (validation['login']) {
-      <span class="text-sm text-red-600 mt-1">{{validation['login']}}</span>
+      @if (validation['username']) {
+      <span class="text-sm text-red-600 mt-1">{{validation['username']}}</span>
       }
     </label>
     <label class="flex flex-col">

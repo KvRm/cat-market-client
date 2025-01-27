@@ -17,14 +17,14 @@ export class AuthLoginPageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   form = {
-    login: '',
+    username: '',
     password: '',
   }
 
   validation: Record<string, string> = {}
 
   ngOnInit(): void {
-    this.form.login = this.authService.registerLogin
+    this.form.username = this.authService.registerLogin
   }
 
   onSubmit() {
@@ -37,9 +37,9 @@ export class AuthLoginPageComponent implements OnInit {
       return
 
     this.authService.login(this.form).subscribe((v) => {
-      const { accessToken } = (v as { accessToken: string }) || {}
-      if (accessToken) {
-        localStorage.setItem('accessToken', accessToken)
+      const { access_token } = (v as { access_token: string }) || {}
+      if (access_token) {
+        localStorage.setItem('accessToken', access_token)
         window.location.href = `${window.location.origin}/profile`
       }
     })

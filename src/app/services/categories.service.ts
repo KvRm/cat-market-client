@@ -15,6 +15,6 @@ export class CategoriesService {
   constructor(private http: HttpClient) {}
 
   getCategories() {
-    return this.http.post(`${environment.apiUrl}/categories/all`, {}, { withCredentials: true })
+    return this.http.get(`${environment.apiUrl}/categories/all`, { withCredentials: true })
   }
 }

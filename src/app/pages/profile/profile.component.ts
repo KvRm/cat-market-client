@@ -29,9 +29,9 @@ export class ProfilePageComponent implements OnInit {
 
   form = {
     id: 0,
-    firstName: '',
-    secondName: '',
-    lastName: '',
+    first_name: '',
+    second_name: '',
+    last_name: '',
     email: '',
     phone: '',
     sex: null as null | number,
@@ -48,8 +48,8 @@ export class ProfilePageComponent implements OnInit {
     this.isLoading = true
     this.userService.fetchUser().subscribe(
       (v) => {
-        const { id, firstName, email, lastName, phone, secondName, sex } = v as User
-        const value = { id, firstName, email, lastName, phone, secondName, sex }
+        const { id, first_name, email, last_name, phone, second_name, sex } = v as User
+        const value = { id, first_name, email, last_name, phone, second_name, sex }
         this.form = { ...value }
         this.formSnapshot = { ...value }
         this.isLoading = false
@@ -78,7 +78,7 @@ export class ProfilePageComponent implements OnInit {
   onSubmit() {
     this.validation = Object.fromEntries(
       Object.entries(this.form)
-        .filter(([key, value]) => !value && key !== 'secondName')
+        .filter(([key, value]) => !value && key !== 'second_name')
         .map(([key]) => [key, 'Поле обязательно к заполнению']),
     )
     if (Object.keys(this.validation).length)

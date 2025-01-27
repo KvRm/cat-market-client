@@ -8,9 +8,9 @@ import { getHeaders } from '../utils/headers'
 export interface User {
   id: number
   password: string
-  firstName: string
-  secondName: string
-  lastName: string
+  first_name: string
+  second_name: string
+  last_name: string
   email: string
   phone: string
   sex: number
@@ -25,10 +25,10 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   fetchUser() {
-    return this.http.post(`${environment.apiUrl}/user/current`, {}, { headers: getHeaders(), withCredentials: true })
+    return this.http.get(`${environment.apiUrl}/user/current`, { headers: getHeaders(), withCredentials: true })
   }
 
   updateUser(payload: object) {
-    return this.http.post(`${environment.apiUrl}/user/update`, payload, { headers: getHeaders(), withCredentials: true })
+    return this.http.patch(`${environment.apiUrl}/user/update`, payload, { headers: getHeaders(), withCredentials: true })
   }
 }

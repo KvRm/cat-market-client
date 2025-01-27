@@ -56,7 +56,7 @@ export class MarketCatalogueCardComponent {
   addToCart(count: number) {
     if (!localStorage.getItem('accessToken'))
       return
-    this.cartService.addToProduct({ productId: this.product.id, count }).subscribe(() => this.cartService.getCurrent())
+    this.cartService.addToProduct({ product_id: this.product.id, count }).subscribe(() => this.cartService.getCurrent())
   }
 
   getProductImageUrl(url: string) {

@@ -49,7 +49,7 @@ export class MarketCatalogueComponent implements OnInit {
     })
   }
 
-  getProducts(params: object) {
+  getProducts(params: Record<string, string | number | number[]>) {
     this.productsService.getProducts(params).subscribe((v) => {
       this.products = v as Product[]
     })

@@ -28,7 +28,7 @@ export class CartsService {
   cart: Cart | null = null
 
   getCurrent() {
-    return this.http.post(`${environment.apiUrl}/carts/current`, {}, { headers: getHeaders(), withCredentials: true })
+    return this.http.get(`${environment.apiUrl}/carts/current`, { headers: getHeaders(), withCredentials: true })
       .subscribe(
         v => this.cart = v as Cart || null,
         () => this.cart = null,

@@ -17,9 +17,9 @@ export class AuthRegisterPageComponent {
 
   form = {
     password: '',
-    firstName: '',
-    secondName: '',
-    lastName: '',
+    first_name: '',
+    second_name: '',
+    last_name: '',
     email: '',
     phone: '',
     sex: null as null | number,
@@ -38,7 +38,7 @@ export class AuthRegisterPageComponent {
   onSubmit() {
     this.validation = Object.fromEntries(
       Object.entries(this.form)
-        .filter(([key, value]) => !value && key !== 'secondName')
+        .filter(([key, value]) => !value && key !== 'second_name')
         .map(([key]) => [key, 'Поле обязательно к заполнению']),
     )
     if (Object.keys(this.validation).length)
